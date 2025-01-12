@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, mean_absolute_error
 from sklearn.metrics import accuracy_score, mean_absolute_error, precision_score, recall_score, f1_score
 
-data = pd.read_csv('data/cleaned_data.csv')
+data = pd.read_csv('../data/cleaned_data.csv')
 
 X = data.drop(columns=['Status'])
 y = data['Status']

@@ -7,7 +7,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 
-data = pd.read_csv('data/cleaned_data.csv')
+data = pd.read_csv('../data/cleaned_data.csv')
 
 X = data.drop(columns=['Status'])
 y = data['Status']
