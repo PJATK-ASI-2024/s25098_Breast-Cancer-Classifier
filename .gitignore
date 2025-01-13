@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+*.xml
+*.iml
+*.csv
+*.cfg
+*.json
+.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -68,7 +75,7 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
+# Sphinx reports
 docs/_build/
 
 # PyBuilder
@@ -143,7 +150,7 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs documentation
+# mkdocs reports
 /site
 
 # mypy
