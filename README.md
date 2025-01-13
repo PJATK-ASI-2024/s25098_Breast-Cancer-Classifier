@@ -93,12 +93,10 @@ Do rozwiązania problemu klasyfikacji statusu życia pacjentek z rakiem piersi, 
    Aplikacje pobierz za pomocą komendy:
    ```bash
    git clone https://github.com/PJATK-ASI-2024/s25098_Breast-Cancer-Classifier.git
-   '''
 2. **Zbudowanie obrazu Dockera:**
    Z katalogu głównego aplikacji, uruchom poniższą komende, która zbuduje obraz Dockera i wszystkie potrzebne kontenery:
    ```bash
    docker-compose up --build
-   '''
 3. **Korzystanie z modelu**
    Po uruchomieniu kontenera, aplikacja jest dostępna pod adresem http://localhost:5000.
    Aby sklasyfikować dane wejściowe, wyślij zapytanie POST do aplikacji:
@@ -118,4 +116,3 @@ Do rozwiązania problemu klasyfikacji statusu życia pacjentek z rakiem piersi, 
    "Reginol Node Positive": 2,
    "Survival Months": 172
    }'
-   '''
