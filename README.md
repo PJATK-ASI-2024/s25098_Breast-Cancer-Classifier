@@ -87,7 +87,7 @@ Do rozwiązania problemu klasyfikacji statusu życia pacjentek z rakiem piersi, 
   - `n_estimators=100`
 
 ### Instrukcje Użytkowania
-#### Jak pobrać aplikację:
+#### Jak pobrać i uruchomić aplikację:
 
 1. **Pobranie repozytorium:**
    
