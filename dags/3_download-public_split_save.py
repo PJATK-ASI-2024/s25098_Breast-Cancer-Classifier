@@ -78,7 +78,7 @@ def save_split_data_to_sheets(**kwargs):
 
 # Define the DAG
 with DAG(
-        dag_id="data_split_dag",
+        dag_id="3_download-public_split_save_dag",
         start_date=datetime(2025, 1, 1),
         schedule_interval=None,
         catchup=False,

@@ -32,7 +32,7 @@ preprocessor = ColumnTransformer(
 
 model = Pipeline(steps=[
     ('preprocessor', preprocessor),
-    ('model', RandomForestClassifier(bootstrap=False, criterion='entropy', max_features=0.9,
+    ('models', RandomForestClassifier(bootstrap=False, criterion='entropy', max_features=0.9,
                                      min_samples_leaf=16, min_samples_split=3, n_estimators=100, random_state=42))
 ])
 

@@ -9,7 +9,6 @@ import os
 import numpy as np
 
 SHEET_NAME = "Breast_Cancer_Project"
-CLEANED_CSV_FILE_PATH = "/opt/airflow/datasets/cleaned_data.csv"
 CREDENTIALS_FILE_PATH = "/opt/airflow/credentials/credentials.json"
 
 
@@ -100,6 +99,7 @@ def clean_data(**kwargs):
 
     # Push cleaned data to XCom
     kwargs['ti'].xcom_push(key='cleaned_data', value=cleaned_data.to_dict())
+
     print("Cleaned data pushed to XCom.")
 
 
@@ -138,6 +138,12 @@ def process_data(**kwargs):
     X_categorical_encoded = X_categorical_encoded.reset_index(drop=True)
     X_numeric_normalized.reset_index(drop=True, inplace=True)
 
+    # Map 'True'/'False' to 1/0 for any boolean columns after one-hot encoding
+    for col in X_categorical_encoded.columns:
+        if X_categorical_encoded[col].dtype == bool:  # Check if column is of boolean type
+            print(f"Mapping 'True'/'False' to 1/0 in column '{col}'...")
+            X_categorical_encoded[col] = X_categorical_encoded[col].astype(int)
+
     # Concatenate the numeric and categorical data
     print("Combining normalized numerical data with encoded categorical data...")
     processed_data = pd.concat([X_numeric_normalized, X_categorical_encoded], axis=1)
@@ -175,7 +181,7 @@ def save_data_to_sheets(**kwargs):
 
 
 with DAG(
-        dag_id="data_preprocessing_dag",
+        dag_id="3_download-cloud_clean_standard-normalisate_save_dag",
         start_date=datetime(2025, 1, 1),
         schedule_interval=None,
         catchup=False,

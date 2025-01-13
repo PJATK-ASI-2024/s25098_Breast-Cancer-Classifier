@@ -71,7 +71,7 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     # The following line can be used to set a custom config file, stored in the local config folder
     # If you want to use it, outcomment it and replace airflow.cfg with the name of your config file
-    # AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
+    AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
@@ -79,6 +79,9 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/datasets:/opt/airflow/datasets
     - ${AIRFLOW_PROJ_DIR:-.}/credentials:/opt/airflow/credentials
+    - ${AIRFLOW_PROJ_DIR:-.}/models:/opt/airflow/models
+    - ${AIRFLOW_PROJ_DIR:-.}/reports:/opt/airflow/reports
+    - ${AIRFLOW_PROJ_DIR:-.}/app:/opt/airflow/app
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -102,6 +105,16 @@ services:
       retries: 5
       start_period: 5s
     restart: always
+
+  model-app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: model-app
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./models:/opt/airflow/models
 
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
