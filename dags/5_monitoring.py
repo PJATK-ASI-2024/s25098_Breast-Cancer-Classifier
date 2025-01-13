@@ -6,7 +6,7 @@ import pandas as pd
 import joblib
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 
-MODEL_PATH = "/opt/airflow/models/model.pkl"
+MODEL_PATH = "/opt/airflow/model/model.pkl"
 TEST_DATA_PATH = "/opt/airflow/datasets/processed_data.csv"
 REPORT_PATH = "/opt/airflow/reports/evaluation_report.txt"
 

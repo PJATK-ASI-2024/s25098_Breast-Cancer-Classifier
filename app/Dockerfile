@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/main.py .
 
-COPY models/model.pkl .
+COPY model/model.pkl .
 
 CMD ["python", "main.py"]

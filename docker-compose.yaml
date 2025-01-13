@@ -79,7 +79,7 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/datasets:/opt/airflow/datasets
     - ${AIRFLOW_PROJ_DIR:-.}/credentials:/opt/airflow/credentials
-    - ${AIRFLOW_PROJ_DIR:-.}/models:/opt/airflow/models
+    - ${AIRFLOW_PROJ_DIR:-.}/model:/opt/airflow/model
     - ${AIRFLOW_PROJ_DIR:-.}/reports:/opt/airflow/reports
     - ${AIRFLOW_PROJ_DIR:-.}/app:/opt/airflow/app
   user: "${AIRFLOW_UID:-50000}:0"
@@ -114,7 +114,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./models:/opt/airflow/models
+      - ./model:/opt/airflow/model
 
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change

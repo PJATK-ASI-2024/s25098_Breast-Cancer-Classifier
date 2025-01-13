@@ -67,7 +67,7 @@ def train_model(**kwargs):
                                    min_samples_leaf=16, min_samples_split=3, n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
 
-    output_model_path = "/opt/airflow/models/model.pkl"
+    output_model_path = "/opt/airflow/model/model.pkl"
     joblib.dump(model, output_model_path)
     print(f"Model saved to {output_model_path}")
 
@@ -78,7 +78,7 @@ def evaluate_model(**kwargs):
     X_test = pd.DataFrame(test_data[0])
     y_test = pd.Series(test_data[1])
 
-    model_path = "/opt/airflow/models/model.pkl"
+    model_path = "/opt/airflow/model/model.pkl"
 
     model = joblib.load(model_path)
     y_pred = model.predict(X_test)
